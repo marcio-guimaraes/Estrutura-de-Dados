@@ -1,38 +1,32 @@
 #include <stdio.h>
-#include "Lista.h"
+#include "fila.h"
 
-int main() {
-  Lista* minhaLista = criaLista();
+int main()
+{
 
-  // Adiciona elementos
-  add(minhaLista, 10);
-  add(minhaLista, 20);
-  append(minhaLista, 30);
-  insert(minhaLista, 2, 25); // Insere 25 na posição 2
+  int Bread = 0, Jane = 1, Bill = 2, Kant = 3, Vitor = 4, Joao = 5;
+  char *nomes[] = {"Bread", "Jane", "Bill", "Kant", "Vitor", "Joao"};
 
-  // Imprime a lista
-  imprimeLista(minhaLista);
+  Fila *minha_fila = Queue();
 
-  // Remove e verifica elementos
-  printf("Removendo 10: %s\n", removeItem(minhaLista, 10) ? "Removido" : "Não encontrado");
-  imprimeLista(minhaLista);
+  enqueue(minha_fila, Bread);
+  enqueue(minha_fila, Jane);
+  enqueue(minha_fila, Bill);
+  enqueue(minha_fila, Kant);
+  enqueue(minha_fila, Vitor);
+  enqueue(minha_fila, Joao);
 
-  // Pop e operações adicionais
-  printf("Pop último: %d\n", pop(minhaLista));
-  imprimeLista(minhaLista);
-  printf("Pop posição 0: %d\n", popPos(minhaLista, 0));
-  imprimeLista(minhaLista);
+  while (1)
+  {
+    int temp = front(minha_fila);
 
-  // Verifica se a lista está vazia
-  printf("Lista está vazia: ");
-  if (isEmpty(minhaLista)) {
-    printf("Sim");
-  } else {
-    printf("Não (Tamanho: %d )",minhaLista->tamanho);
+    dequeue(minha_fila);
+
+    printf("%s\n", nomes[temp]);
+    getchar();
+
+    enqueue(minha_fila, temp);
   }
-
-  // Libera a lista
-  liberaLista(minhaLista);
 
   return 0;
 }
