@@ -15,7 +15,7 @@ typedef struct Lista
 
 Lista *criaLista();  // feito
 void add(Lista *l, int item); // feito
-int removeItem(Lista *l, int item);
+int removeItem(Lista *l, int item); //feito
 int search(Lista *l, int item);
 int isEmpty(Lista *l);
 void append(Lista *l, int item);

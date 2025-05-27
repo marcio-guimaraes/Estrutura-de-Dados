@@ -17,7 +17,7 @@ Lista *criaLista()
 void add(Lista *l, int item)
 {
     No *novo_elemento = (No *)malloc(sizeof(No));
-    if (novo_elemento)
+    if (novo_elemento != NULL)
     {
         novo_elemento->dado = item;
         novo_elemento->prox = l->inicio;
@@ -26,43 +26,10 @@ void add(Lista *l, int item)
     }
 }
 
+
 int removeItem(Lista *l, int item)
 {
-    if (l->inicio == NULL)
-    {
-        return 0;
-    }
-
-    No *atual = l->inicio;
-    No *anterior = NULL;
-    if (atual->dado == item)
-    {
-        if (anterior == NULL)
-        {
-            l->inicio = atual->prox;
-            free(atual);
-            l->tamanho--;
-            return 1;
-        }
-            while (atual != NULL)
-            {
-                if (atual->dado == item)
-                {
-                    anterior->prox = atual->prox;
-                    free(atual);
-                    l->tamanho--;
-                    return 1;
-                }
-            }
-        anterior = atual;
-        atual = atual->prox;
-    }
-
-    return 0;
-}
-
-/*int removeItem(Lista *l, int item)
-{
+    // a lista existe
     if (l->inicio == NULL)
         return 0;
 
@@ -71,9 +38,10 @@ int removeItem(Lista *l, int item)
 
     while (atual != NULL)
     {
+        // if atual == item
         if (atual->dado == item)
         {
-            // Se o item está no início da lista
+            // se tá no começo da lista
             if (anterior == NULL)
             {
                 l->inicio = atual->prox;
@@ -92,9 +60,8 @@ int removeItem(Lista *l, int item)
         atual = atual->prox;
     }
 
-    return 0; // Item não encontrado
+    return 0;
 }
-*/
 
 void imprimeLista(Lista *l)
 {
