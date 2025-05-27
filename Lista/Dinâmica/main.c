@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include "Lista.h"
-#include "lista.c"
 
 int main() {
   Lista* minhaLista = criaLista();

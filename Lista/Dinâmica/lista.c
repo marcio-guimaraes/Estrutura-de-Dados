@@ -26,10 +26,9 @@ void add(Lista *l, int item)
     }
 }
 
-
 int removeItem(Lista *l, int item)
 {
-    // a lista existe
+    // a lista existe?
     if (l->inicio == NULL)
         return 0;
 
