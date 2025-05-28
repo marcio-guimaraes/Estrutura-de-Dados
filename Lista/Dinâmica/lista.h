@@ -13,18 +13,18 @@ typedef struct Lista
     int tamanho;
 } Lista;
 
-Lista *criaLista();  // feito
-void add(Lista *l, int item); // feito
-int removeItem(Lista *l, int item); //feito
-int search(Lista *l, int item);
-int isEmpty(Lista *l);
+Lista *criaLista(); 
+void add(Lista *l, int item);
+int removeItem(Lista *l, int item); 
+int search(Lista *l, int item); 
+int isEmpty(Lista *l); 
 void append(Lista *l, int item);
-int indice(Lista *l, int item);
+int indice(Lista *l, int item); 
 int insert(Lista *l, int pos, int item);
-int insereOrdenado(Lista *l, int item);
-int pop(Lista *l);
+int insereOrdenado(Lista *l, int item); 
+int pop(Lista *l); 
 int popPos(Lista *l, int pos);
-void imprimeLista(Lista *l);  // feito
-int liberaLista(Lista *l);  // feito
+void imprimeLista(Lista *l);
+int liberaLista(Lista *l);
 
 #endif
