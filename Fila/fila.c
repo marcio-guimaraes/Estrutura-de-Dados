@@ -4,12 +4,12 @@
 
 Fila *Queue()
 {
-    Fila *novafila = (Fila *)malloc(sizeof(Fila *));
+    Fila *novafila = malloc(sizeof(Fila));
 
     if (novafila != NULL)
     {
-        novafila->fim = NULL;
         novafila->inicio = NULL;
+        novafila->fim = NULL;
         novafila->tamanho = 0;
     }
 
@@ -18,9 +18,9 @@ Fila *Queue()
 
 void enqueue(Fila *f, int item)
 {
-    No *novo_elemento = (No *)malloc(sizeof(novo_elemento));
+    No *novo_elemento = malloc(sizeof(No)); 
 
-    if (novo_elemento)
+    if (novo_elemento != NULL)
     {
         novo_elemento->dado = item;
         novo_elemento->prox = NULL;
@@ -35,14 +35,14 @@ void enqueue(Fila *f, int item)
             f->fim->prox = novo_elemento;
             f->fim = novo_elemento;
         }
-        f->tamanho;
+
+        f->tamanho++;
     }
 }
 
 int dequeue(Fila *f)
 {
-
-    if (f->inicio == NULL)
+    if (f == NULL || f->inicio == NULL)
         return -1;
 
     No *remover = f->inicio;
@@ -50,9 +50,7 @@ int dequeue(Fila *f)
     f->inicio = remover->prox;
 
     if (f->inicio == NULL)
-    {
         f->fim = NULL;
-    }
 
     free(remover);
     f->tamanho--;
@@ -62,6 +60,9 @@ int dequeue(Fila *f)
 
 int front(Fila *f)
 {
+    if (f == NULL || f->inicio == NULL)
+        return -1;
+
     return f->inicio->dado;
 }
 
@@ -72,5 +73,5 @@ int isEmpty(Fila *f)
 
 int size(Fila *f)
 {
-    return f->tamanho;
+    return f ? f->tamanho : 0;
 }
