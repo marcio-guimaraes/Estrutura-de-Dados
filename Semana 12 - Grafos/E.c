@@ -10,7 +10,7 @@ typedef struct
     int x, y;
 } Point;
 
-int n, m;
+int tamanho, numAmizades;
 char grid[MAX][MAX];
 int distMonstros[MAX][MAX];
 int distA[MAX][MAX];
@@ -23,18 +23,18 @@ char path[MAX][MAX];
 
 int valido(int x, int y)
 {
-    return x >= 0 && x < n && y >= 0 && y < m && grid[x][y] != '#';
+    return x >= 0 && x < tamanho && y >= 0 && y < numAmizades && grid[x][y] != '#';
 }
 
 void bfsMonstros()
 {
     front = rear = 0;
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < m; j++)
+    for (int i = 0; i < tamanho; i++)
+        for (int j = 0; j < numAmizades; j++)
             distMonstros[i][j] = INF;
 
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < m; j++)
+    for (int i = 0; i < tamanho; i++)
+        for (int j = 0; j < numAmizades; j++)
             if (grid[i][j] == 'M')
             {
                 distMonstros[i][j] = 0;
@@ -61,8 +61,8 @@ int bfsA(int startX, int startY)
 {
     front = rear = 0;
 
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < m; j++)
+    for (int i = 0; i < tamanho; i++)
+        for (int j = 0; j < numAmizades; j++)
         {
             distA[i][j] = INF;
             path[i][j] = 0;
@@ -75,7 +75,7 @@ int bfsA(int startX, int startY)
     {
         Point p = queue[front++];
 
-        if (p.x == 0 || p.x == n - 1 || p.y == 0 || p.y == m - 1)
+        if (p.x == 0 || p.x == tamanho - 1 || p.y == 0 || p.y == numAmizades - 1)
         {
             int len = distA[p.x][p.y];
             char resultado[len + 1];
@@ -130,13 +130,13 @@ int bfsA(int startX, int startY)
 
 int main()
 {
-    scanf("%d %d\n", &n, &m);
+    scanf("%d %d\n", &tamanho, &numAmizades);
 
     int startX = -1, startY = -1;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < tamanho; i++)
     {
-        fgets(grid[i], m + 2, stdin);
-        for (int j = 0; j < m; j++)
+        fgets(grid[i], numAmizades + 2, stdin);
+        for (int j = 0; j < numAmizades; j++)
         {
             if (grid[i][j] == 'A')
             {

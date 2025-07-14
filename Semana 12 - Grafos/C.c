@@ -3,7 +3,7 @@
 
 #define MAX 100005
 
-int n, m;
+int tamanho, numAmizades;
 int cor[MAX];
 int visitado[MAX];
 int *adj[MAX] = {NULL};
@@ -48,19 +48,19 @@ int bfs(int inicio)
 
 int main()
 {
-    scanf("%d %d", &n, &m);
+    scanf("%d %d", &tamanho, &numAmizades);
     int a, b;
 
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < tamanho; i++)
         adj[i] = NULL;
 
-    for (int i = 0; i < m; i++)
+    for (int i = 0; i < numAmizades; i++)
     {
         scanf("%d %d", &a, &b);
         adiciona_aresta(a, b);
     }
 
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i <= tamanho; i++)
     {
         if (!visitado[i])
         {
@@ -72,7 +72,7 @@ int main()
         }
     }
 
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i <= tamanho; i++)
         printf("%d ", cor[i]);
     printf("\n");
 

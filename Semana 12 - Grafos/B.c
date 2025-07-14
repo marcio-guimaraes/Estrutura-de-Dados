@@ -9,7 +9,7 @@ typedef struct
     int x, y;
 } Ponto;
 
-int n, m;
+int tamanho, numAmizades;
 char mapa[MAX][MAX + 1];
 int visitado[MAX][MAX];
 Ponto pai[MAX][MAX];
@@ -34,7 +34,7 @@ void bfs(int sx, int sy)
             int nx = atual.x + dx[i];
             int ny = atual.y + dy[i];
 
-            if (nx >= 0 && nx < n && ny >= 0 && ny < m &&
+            if (nx >= 0 && nx < tamanho && ny >= 0 && ny < numAmizades &&
                 !visitado[nx][ny] && mapa[nx][ny] != '#')
             {
                 visitado[nx][ny] = 1;
@@ -48,13 +48,13 @@ void bfs(int sx, int sy)
 
 int main()
 {
-    scanf("%d %d", &n, &m);
+    scanf("%d %d", &tamanho, &numAmizades);
     int ax, ay, bx, by;
 
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < tamanho; i++)
     {
         scanf("%s", mapa[i]);
-        for (int j = 0; j < m; j++)
+        for (int j = 0; j < numAmizades; j++)
         {
             if (mapa[i][j] == 'A')
             {

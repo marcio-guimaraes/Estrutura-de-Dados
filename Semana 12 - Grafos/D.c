@@ -3,7 +3,7 @@
 
 #define MAX 100005
 
-int n, m;
+int tamanho, numAmizades;
 int *adj[MAX];
 int grau[MAX];
 int vis[MAX];
@@ -41,9 +41,9 @@ int dfs(int s, int p)
 
 int main()
 {
-    scanf("%d %d", &n, &m);
+    scanf("%d %d", &tamanho, &numAmizades);
     int a, b;
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i <= tamanho; i++)
     {
         adj[i] = NULL;
         grau[i] = 0;
@@ -51,16 +51,16 @@ int main()
         pai[i] = -1;
     }
 
-    for (int i = 0; i < m; i++)
+    for (int i = 0; i < numAmizades; i++)
     {
         scanf("%d %d", &a, &b);
-        adj[a] = (int *) realloc(adj[a], (grau[a] + 1) * sizeof(int));
-        adj[b] = (int *) realloc(adj[b], (grau[b] + 1) * sizeof(int));
+        adj[a] = (int *)realloc(adj[a], (grau[a] + 1) * sizeof(int));
+        adj[b] = (int *)realloc(adj[b], (grau[b] + 1) * sizeof(int));
         adj[a][grau[a]++] = b;
         adj[b][grau[b]++] = a;
     }
 
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i <= tamanho; i++)
     {
         if (!vis[i])
         {
@@ -85,7 +85,7 @@ int main()
                     printf("%d ", resultado[j]);
                 printf("\n");
 
-                for (int k = 1; k <= n; k++)
+                for (int k = 1; k <= tamanho; k++)
                 {
                     free(adj[k]);
                 }
@@ -96,7 +96,7 @@ int main()
 
     printf("IMPOSSIBLE\n");
 
-    for (int k = 1; k <= n; k++)
+    for (int k = 1; k <= tamanho; k++)
     {
         free(adj[k]);
     }
